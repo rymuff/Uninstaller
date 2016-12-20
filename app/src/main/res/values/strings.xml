@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Uninstaller</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_icon">App Icon</string>
+    <string name="application_name">Application Name</string>
+    <string name="refresh">Refresh</string>
+</resources>
