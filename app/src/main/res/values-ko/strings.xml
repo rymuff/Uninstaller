@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">언인스톨러</string>
+    <string name="action_settings">설정</string>
+    <string name="app_icon">앱 아이콘</string>
+    <string name="application_name">애플리케이션 이름</string>
+    <string name="refresh">새로고침</string>
+</resources>
