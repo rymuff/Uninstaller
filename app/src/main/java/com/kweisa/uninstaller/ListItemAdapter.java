@@ -56,8 +56,8 @@ public class ListItemAdapter extends BaseAdapter {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_item, null);
 
-            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.imageView);
-            viewHolder.textView1 = (TextView) convertView.findViewById(R.id.textView1);
+            viewHolder.imageView = convertView.findViewById(R.id.imageView);
+            viewHolder.textView1 = convertView.findViewById(R.id.textView1);
 
             convertView.setTag(viewHolder);
         } else {

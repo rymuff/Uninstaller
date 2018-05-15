@@ -4,4 +4,8 @@
     <string name="app_icon">App Icon</string>
     <string name="application_name">Application Name</string>
     <string name="refresh">Refresh</string>
+    <string name="delete_all_title">Uninstall All Applications</string>
+    <string name="delete_all_message">Do you want to uninstall all apps?</string>
+    <string name="delete_all_positive">OK</string>
+    <string name="delete_all_negative">Cancel</string>
 </resources>

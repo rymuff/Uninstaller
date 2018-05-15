@@ -26,28 +26,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        super.onResume();
         refresh();
         if (!uninstallStack.isEmpty())
             uninstall(uninstallStack.pop());
+        super.onResume();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        assert fab != null;
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(MainActivity.this)
-                        .setTitle("Uninstall All Applications")
-                        .setMessage("Do you want to uninstall all apps?")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        .setTitle(R.string.delete_all_title)
+                        .setMessage(R.string.delete_all_message)
+                        .setPositiveButton(R.string.delete_all_positive, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 for (ListData listData : listItemAdapter.getList()) {
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                                     uninstall(uninstallStack.pop());
                             }
                         })
-                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(R.string.delete_all_negative, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -67,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         uninstallStack = new Stack<>();
-        ListView listView = (ListView) findViewById(R.id.listView);
+        ListView listView = findViewById(R.id.listView);
         listItemAdapter = new ListItemAdapter(this);
-        assert listView != null;
+
         listView.setAdapter(listItemAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -99,19 +98,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar list_item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.refresh) {
             refresh();
             return true;

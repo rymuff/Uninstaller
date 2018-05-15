@@ -22,7 +22,6 @@ public class ListData {
         return appName;
     }
 
-
     public String getPackName() {
         return packName;
     }
