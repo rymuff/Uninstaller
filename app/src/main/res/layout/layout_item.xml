@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.kweisa.uninstaller.BindingUtils" />
+
+        <variable
+            name="appData"
+            type="com.kweisa.uninstaller.AppData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:background="?android:attr/selectableItemBackground">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:src="@{appData.icon}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{appData.label}"
+            android:textAppearance="@style/TextAppearance.App.Subtitle1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/guideline"
+            app:layout_constraintStart_toEndOf="@+id/icon"
+            tools:text="App Name" />
+
+        <TextView
+            android:id="@+id/last_time_used_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last time used: "
+            android:textAppearance="@style/TextAppearance.App.Caption"
+            app:layout_constraintBaseline_toBaselineOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/label" />
+
+        <TextView
+            android:id="@+id/last_time_used"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{BindingUtils.format(appData.lastTimeUsed)}"
+            android:textAppearance="@style/TextAppearance.App.Caption"
+            app:layout_constraintBaseline_toBaselineOf="@+id/last_time_used_label"
+            app:layout_constraintStart_toEndOf="@+id/last_time_used_label"
+            tools:text="0000-00-00" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:checked="@={appData.checked}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/guideline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:textSize="0.1sp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/guideline2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:textSize="0.1sp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+        <!--<View-->
+        <!--android:id="@+id/divider"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#bbbbbb"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="@+id/textView3" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

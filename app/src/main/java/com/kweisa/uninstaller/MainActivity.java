@@ -24,11 +24,11 @@ import java.util.Map;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
 
-    AppDataAdapter appDataAdapter;
-    ObservableArrayList<AppData> appDataList;
-    Calendar calendar;
+    private AppDataAdapter appDataAdapter;
+    private ObservableArrayList<AppData> appDataList;
+    private Calendar calendar;
     private Stack<String> uninstallStack = new Stack<>();
 
     @Override
@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         calendar.add(Calendar.YEAR, -1);
 
         update();
-//        checkAll();
     }
 
     @Override
