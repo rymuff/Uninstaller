@@ -3,9 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.kweisa.uninstaller.MainActivity">
     <item
-        android:id="@+id/refresh"
-        android:icon="@drawable/ic_refresh"
+        android:id="@+id/action_settings"
+        android:orderInCategory="200"
+        android:icon="@drawable/ic_check_box_outline"
+        android:title="@string/action_settings"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_uninstall"
+        android:title="@string/action_uninstall"
         android:orderInCategory="100"
-        android:title="@string/refresh"
-        app:showAsAction="always" />
+        android:icon="@drawable/ic_delete"
+        app:showAsAction="ifRoom"/>
 </menu>
