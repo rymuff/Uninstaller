@@ -18,7 +18,7 @@ public class BindingUtils {
 
     public static String format(long lastTimeUsed) {
         if (lastTimeUsed == 0)
-            return "never";
-        return DateFormat.getDateTimeInstance().format(new Date(lastTimeUsed));
+            return " never";
+        return " " + DateFormat.getDateTimeInstance().format(new Date(lastTimeUsed));
     }
 }

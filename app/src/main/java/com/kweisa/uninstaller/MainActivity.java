@@ -24,7 +24,6 @@ import java.util.Map;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
 
     private AppDataAdapter appDataAdapter;
     private ObservableArrayList<AppData> appDataList;
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         appDataList = new ObservableArrayList<>();
         appDataAdapter = new AppDataAdapter();
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_checkbox) {
             if (item.isChecked()) {
                 uncheckAll();
                 item.setChecked(false);

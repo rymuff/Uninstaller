@@ -31,7 +31,7 @@ public class AppData {
         return lastTimeUsed;
     }
 
-    public String getPackageName() {
+    String getPackageName() {
         return packageName;
     }
 
