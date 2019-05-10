@@ -1,4 +1,4 @@
-package com.kweisa.uninstaller;
+package com.kweisa.uninstaller.ui.splash;
 
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
@@ -9,7 +9,9 @@ import android.provider.Settings;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.kweisa.uninstaller.R;
 import com.kweisa.uninstaller.databinding.ActivitySplashBinding;
+import com.kweisa.uninstaller.ui.main.MainActivity;
 
 import java.util.Calendar;
 import java.util.List;

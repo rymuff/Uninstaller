@@ -5,16 +5,16 @@
 
     <data>
 
-        <import type="com.kweisa.uninstaller.BindingUtils" />
+        <import type="com.kweisa.uninstaller.utilities.FormatUtils" />
 
         <variable
-            name="appData"
-            type="com.kweisa.uninstaller.AppData" />
+            name="app"
+            type="com.kweisa.uninstaller.data.App" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="88dp"
         android:background="?android:attr/selectableItemBackground">
 
         <ImageView
@@ -23,18 +23,18 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:src="@{appData.icon}"
+            android:contentDescription="@string/app_icon"
+            android:src="@{app.icon}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@mipmap/ic_launcher_round"
-            android:contentDescription="@string/app_icon" />
+            tools:srcCompat="@mipmap/ic_launcher_round" />
 
         <TextView
             android:id="@+id/label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@{appData.label}"
+            android:text="@{app.label}"
             android:textAppearance="@style/TextAppearance.App.Subtitle1"
             app:layout_constraintBaseline_toBaselineOf="@+id/guideline"
             app:layout_constraintStart_toEndOf="@+id/icon"
@@ -53,7 +53,7 @@
             android:id="@+id/last_time_used"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{BindingUtils.format(appData.lastTimeUsed)}"
+            android:text="@{FormatUtils.INSTANCE.dateTimeFormat(app.lastTimeUsed)}"
             android:textAppearance="@style/TextAppearance.App.Caption"
             app:layout_constraintBaseline_toBaselineOf="@+id/last_time_used_label"
             app:layout_constraintStart_toEndOf="@+id/last_time_used_label"
@@ -63,9 +63,9 @@
             android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:checked="@={appData.checked}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:checked="@={app.checked}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,6 +86,24 @@
             android:textSize="0.1sp"
             android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@+id/guideline" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{FormatUtils.INSTANCE.mbFormat(app.size)}"
+            android:textAppearance="@style/TextAppearance.App.Caption"
+            app:layout_constraintStart_toStartOf="@+id/last_time_used_label"
+            app:layout_constraintTop_toBottomOf="@+id/last_time_used_label" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#bbbbbb"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/last_time_used_label" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
