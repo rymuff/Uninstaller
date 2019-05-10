@@ -37,16 +37,11 @@ class AppSource private constructor() {
                 val label = applicationInfo.loadLabel(packageManager) as String
                 val lastTimeUsed = usageStatsMap[packageName]?.lastTimeUsed ?: 0
                 val size = storageStatsManager.queryStatsForUid(applicationInfo.storageUuid, applicationInfo.uid).run { appBytes + cacheBytes + dataBytes }
-                with(App(icon, label, lastTimeUsed, packageName, false, size)) {
-                    appList.add(this)
-                    println(this)
-                }
-//                with(App(icon, label, lastTimeUsed, packageName, false, size)) {appList.add(App(icon, label, lastTimeUsed, packageName, false, size))}
+                appList.add(App(icon, label, lastTimeUsed, packageName, false, size))
             }
         }
         return appList
     }
-
 
     companion object {
         @Volatile

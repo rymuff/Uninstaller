@@ -1,10 +1,8 @@
 package com.kweisa.uninstaller.ui.main;
 
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +12,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.kweisa.uninstaller.MyReceiver;
+import com.kweisa.uninstaller.PackageReceiver;
+import com.kweisa.uninstaller.PackageReceiverKt;
 import com.kweisa.uninstaller.R;
 import com.kweisa.uninstaller.data.App;
 import com.kweisa.uninstaller.data.AppItem;
@@ -28,7 +27,7 @@ import java.util.Stack;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
-    private MyReceiver myReceiver = new MyReceiver();
+    private PackageReceiver packageReceiver = new PackageReceiver();
 
     private GroupAdapter groupAdapter;
     private MainViewModel mainViewModel;
@@ -57,14 +56,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_REMOVED);
-        intentFilter.addDataScheme("package");
-        registerReceiver(myReceiver, intentFilter);
+    protected void onStart() {
+        super.onStart();
+        registerReceiver(packageReceiver, PackageReceiverKt.getIntentFilter());
     }
 
-    // TODO: unregister receiver
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(packageReceiver);
+    }
 
     private void initializeUi() {
         mainViewModel.update(this);

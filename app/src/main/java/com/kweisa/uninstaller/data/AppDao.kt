@@ -24,8 +24,6 @@ class AppDao {
 
     fun getApps() = apps as LiveData<List<App>>
 
-    fun getSortedApps() = apps.apply { value = appList.apply { sortBy { it.lastTimeUsed } } } as LiveData<List<App>>
-
     fun setCheckedAll(boolean: Boolean) {
         appList.forEach { app -> if (boolean != app.isChecked) app.isChecked = boolean }
         apps.value = appList
